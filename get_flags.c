@@ -1,16 +1,13 @@
 #include "main.h"
 
 /**
-
-
-* get_flags - Calculates active flags
+* get_flags - Calculates flags
 * @format: Formatted str in which to print the args
 * @i: A pointer to the current index in the format string
 * Return: An int representing flags.
 */
 
 int get_flags(const char *format, int *i)
-
 {
 	/* - + 0 # ' ' */
 
@@ -24,29 +21,27 @@ int get_flags(const char *format, int *i)
 
 	const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
 
-	for(a = 0; FLAGS_CH[a] != '\0'; a++)
+	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
+	{
 
-                        if (format[curr_i] == FLAGS_CH[a])
+		for (a = 0; FLAGS_CH[a] != '\0'; a++)
 
-                        {
+			if (format[curr_i] == FLAGS_CH[a])
 
-                                flags |= FLAGS_ARR[a];
+			{
 
-                                break;
+				flags |= FLAGS_ARR[a];
 
-                        }
+				break;
 
+			}
 
-                if (FLAGS_CH[a] == 0)
+		if (FLAGS_CH[a] == 0)
+			break;
+	}
 
-                        break;
+	*i = curr_i - 1;
 
-        }
-
-
-        *i = curr_i - 1;
-
-
-        return (flags);
+	return (flags);
 
 }

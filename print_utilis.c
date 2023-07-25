@@ -28,11 +28,11 @@ int append_hexa_code(char ascii_code, char buffer[], int i)
 	if (ascii_code < 0)
 		ascii_code *= -1;
 
-	buffer[a++] = '\\';
-	buffer[a++] = 'x';
+	buffer[i++] = '\\';
+	buffer[i++] = 'x';
 
-	buffer[a++] = map_to[ascii_code / 16];
-	buffer[a] = map_to[ascii_code % 16];
+	buffer[i++] = map_to[ascii_code / 16];
+	buffer[i] = map_to[ascii_code % 16];
 
 	return (3);
 }
@@ -56,7 +56,7 @@ int is_digit(char c)
  * @num: Casted number.
  * @size: Number indicating the type to be casted.
  *
- * Return: Casted value. 
+ * Return: Casted value.
  */
 long int convert_size_number(long int num, int size)
 {
@@ -70,10 +70,10 @@ long int convert_size_number(long int num, int size)
 
 /**
  * convert_size_unsgnd - Casts a number to the specified size
- * @num: Number casted. 
- * @size: Type to be casted. 
+ * @num: Number casted.
+ * @size: Type to be casted.
  *
- * Return: Casted value. 
+ * Return: Casted value.
  */
 long int convert_size_unsgnd(unsigned long int num, int size)
 {
